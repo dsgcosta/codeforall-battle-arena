@@ -1,5 +1,7 @@
 package io.codeforall.fanstatics.Abilities;
 
+import io.codeforall.fanstatics.heroes.Hero;
+
 public abstract class AbstractAbility implements Ability{
 
     protected int power;
@@ -12,6 +14,8 @@ public abstract class AbstractAbility implements Ability{
        return power;
     }
 
-    public void use() {
+    public void use(Hero caster, Hero target){
+        //System.out.println("Mage casts Fireball at " + target.getName() + " dealing " + power + " damage");
+        target.takeDamage(power);
     }
 }

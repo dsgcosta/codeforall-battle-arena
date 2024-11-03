@@ -4,7 +4,6 @@ import io.codeforall.fanstatics.heroes.Hero;
 import io.codeforall.fanstatics.heroes.Warrior;
 import io.codeforall.fanstatics.heroes.Mage;
 
-import java.sql.SQLOutput;
 
 public class Arena {
     private Hero[] heroes;
@@ -16,8 +15,8 @@ public class Arena {
 
     public void initializeHeroes(){
         if (heroes.length >= 2){
-            heroes[0] = new Warrior("warrior", 100);
-            heroes[1] = new Mage("mage", 80, 20);
+            heroes[0] = new Warrior("[warrior]", 100, 25);
+            heroes[1] = new Mage("[mage]", 80, 20);
 
         }
     }
@@ -31,12 +30,10 @@ public class Arena {
         }
     }
 
-    public void useHeroAbilities() {
-        for (Hero hero : heroes) {
-            if (hero != null) {
-                System.out.println("Hero name: " + hero.getName() + " health: " + hero.getHealth());
-                hero.useAbility(); // Calls the useAbility() method for each hero
-            }
+    public void battle() {
+        // Mage uses Fireball on Warrior
+        if (heroes[1] instanceof Mage && heroes[0] != null) {
+            heroes[1].useAbility(heroes[0]); // Mage casts Fireball on Warrior
         }
     }
 }

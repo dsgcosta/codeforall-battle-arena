@@ -23,11 +23,16 @@ public abstract class Hero {
     }
 
 
-    public void useAbility() {
+    public void useAbility(Hero target) {
         if (ability != null) {
-            ability.use();
+            ability.use(this, target);
         } else {
             System.out.println(name + " has no ability to use!");
         }
+    }
+
+    public void takeDamage(int amount) {
+        health -= amount;
+        System.out.println(name + " health is now " + health);
     }
 }

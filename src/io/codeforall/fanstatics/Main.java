@@ -10,7 +10,7 @@ public class Main {
         Arena arena = new Arena(2);
         arena.initializeHeroes();
         arena.displayHeroes();
-        arena.useHeroAbilities();
+        arena.battle();
 
     }
 }
