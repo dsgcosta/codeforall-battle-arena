@@ -1,6 +1,6 @@
 package io.codeforall.fanstatics.Abilities;
 
-import io.codeforall.fanstatics.heroes.Hero;
+import io.codeforall.fanstatics.Heroes.Hero;
 
 public abstract class AbstractAbility implements Ability{
 

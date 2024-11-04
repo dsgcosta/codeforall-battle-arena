@@ -1,6 +1,6 @@
 package io.codeforall.fanstatics.Abilities;
 
-import io.codeforall.fanstatics.heroes.Hero;
+import io.codeforall.fanstatics.Heroes.Hero;
 
 // warrior ability
 public class Shieldblock extends AbstractAbility{
@@ -13,6 +13,6 @@ public class Shieldblock extends AbstractAbility{
         String casterName = caster.getName();
         String targetName = target.getName();
 
-        System.out.println(casterName + " casting fireball at " + targetName + " with power: " + power);
+        System.out.println(casterName + " raises a shield " + targetName + " with power: " + power);
     }
 }

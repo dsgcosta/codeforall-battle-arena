@@ -1,4 +1,4 @@
-package io.codeforall.fanstatics.heroes;
+package io.codeforall.fanstatics.Heroes;
 
 import io.codeforall.fanstatics.Abilities.Fireball;
 

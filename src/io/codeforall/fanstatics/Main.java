@@ -12,5 +12,8 @@ public class Main {
         arena.displayHeroes();
         arena.battle();
 
+        TurnManager turnManager = new TurnManager(arena.getHeroes()[0], arena.getHeroes()[1]);
+
+        turnManager.startBattle();
     }
 }

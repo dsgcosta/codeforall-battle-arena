@@ -1,8 +1,8 @@
 package io.codeforall.fanstatics;
 
-import io.codeforall.fanstatics.heroes.Hero;
-import io.codeforall.fanstatics.heroes.Warrior;
-import io.codeforall.fanstatics.heroes.Mage;
+import io.codeforall.fanstatics.Heroes.Hero;
+import io.codeforall.fanstatics.Heroes.Warrior;
+import io.codeforall.fanstatics.Heroes.Mage;
 
 
 public class Arena {
@@ -31,9 +31,13 @@ public class Arena {
     }
 
     public void battle() {
-        // Mage uses Fireball on Warrior
+
         if (heroes[1] instanceof Mage && heroes[0] != null) {
-            heroes[1].useAbility(heroes[0]); // Mage casts Fireball on Warrior
+            heroes[1].useAbility(heroes[0]);
         }
+    }
+
+    public Hero[] getHeroes() {
+        return heroes;
     }
 }
