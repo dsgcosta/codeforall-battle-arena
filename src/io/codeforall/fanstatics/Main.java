@@ -10,7 +10,7 @@ public class Main {
         Arena arena = new Arena(2);
         arena.initializeHeroes();
         arena.displayHeroes();
-        arena.battle();
+        //arena.battle();
 
         TurnManager turnManager = new TurnManager(arena.getHeroes()[0], arena.getHeroes()[1]);
 

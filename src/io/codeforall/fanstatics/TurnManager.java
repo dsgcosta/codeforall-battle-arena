@@ -12,17 +12,42 @@ public class TurnManager {
     }
 
     public void startBattle(){
+        int round = 1;
         System.out.println("Battle starts between " + hero1.getName() + " and " + hero2.getName());
 
-        System.out.println(hero1.getName() + " 's turn");
-        hero1.useAbility(hero2);
+            // Loop until one hero's health is zero or below
+            while (hero1.getHealth() > 0 && hero2.getHealth() > 0) {
+                System.out.println("\n### Round " + round + " ###");
+                // Hero 1's turn
+                System.out.println(hero1.getName() + "'s turn:");
+                hero1.useAbility(hero2);
 
-        if(hero2.getHealth() > 0){
-            System.out.println(hero2.getName() + "'s turn");
-            hero2.useAbility(hero1);
+                // Check if hero 2 is still alive
+                if (hero2.getHealth() <= 0) {
+                    System.out.println(hero2.getName() + "\nhas been defeated!");
+                    System.out.println(hero1.getName() + " wins the battle!");
+                    return; // End battle if hero 2 is defeated
+                }
+
+                // Hero 2's turn
+                System.out.println(hero2.getName() + "'s turn:");
+                hero2.useAbility(hero1);
+
+                // Check if hero 1 is still alive
+                if (hero1.getHealth() <= 0) {
+                    System.out.println(hero1.getName() + " has been defeated!");
+                    System.out.println(hero2.getName() + " wins the battle!");
+                    return; // End battle if hero 1 is defeated
+                }
+
+                round++;
+            }
+
+            // Final health status after the loop ends
+            System.out.println("Final Status:");
+            System.out.println(hero1.getName() + " health: " + hero1.getHealth());
+            System.out.println(hero2.getName() + " health: " + hero2.getHealth());
         }
 
-     //   System.out.println(hero1.getName() + " health " + hero1.getHealth());
-     //   System.out.println(hero2.getName() + " health " + hero2.getHealth());
-    }
 }
+
