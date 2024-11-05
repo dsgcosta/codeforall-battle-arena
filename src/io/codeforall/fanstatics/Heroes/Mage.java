@@ -4,8 +4,8 @@ import io.codeforall.fanstatics.Abilities.Fireball;
 
 // hability: fireball
 public class Mage extends Hero{
-    public Mage(String name, int health, int fireballPower) {
-        super(name, health);
+    public Mage(String name, int defense,  int health, int fireballPower) {
+        super(name, defense, health);
         this.ability = new Fireball(fireballPower);
     }
 }

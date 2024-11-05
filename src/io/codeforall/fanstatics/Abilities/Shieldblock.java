@@ -13,6 +13,8 @@ public class Shieldblock extends AbstractAbility{
         String casterName = caster.getName();
         String targetName = target.getName();
 
+        caster.increaseHealth(power);
+
         System.out.println(casterName + " raises a shield " + targetName + " with power: " + power);
     }
 }

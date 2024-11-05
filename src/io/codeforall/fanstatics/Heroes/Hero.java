@@ -6,11 +6,13 @@ public abstract class Hero {
 
     private String name;
     private int health;
+    private int defense;
     public Ability ability;
 
 
-    public Hero(String name, int health) {
+    public Hero(String name, int defense, int health) {
         this.name = name;
+        this.defense = defense;
         this.health = health;
     }
 
@@ -22,6 +24,10 @@ public abstract class Hero {
         return health;
     }
 
+    public int getDefense(){
+        return defense;
+    }
+
 
     public void useAbility(Hero target) {
         if (ability != null) {
@@ -31,8 +37,15 @@ public abstract class Hero {
         }
     }
 
-    public void takeDamage(int amount) {
-        health -= amount;
-        System.out.println(name + " health is now " + health);
+    public void takeDamage(int damage) {
+        int damageTaken = damage - defense;
+        health -= damageTaken;
+        System.out.println(name + " takes " + damageTaken + " damage (Defense: " + defense + "), health is now: " + health);
     }
+
+    public void increaseHealth(int amount) {
+        health += amount;
+        System.out.println(name + "'s health increased by " + amount + ". Health is now: " + health);
+    }
+
 }

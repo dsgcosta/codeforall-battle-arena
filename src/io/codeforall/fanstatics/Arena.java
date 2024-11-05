@@ -15,8 +15,8 @@ public class Arena {
 
     public void initializeHeroes(){
         if (heroes.length >= 2){
-            heroes[0] = new Warrior("[warrior]", 100, 25);
-            heroes[1] = new Mage("[mage]", 80, 20);
+            heroes[0] = new Warrior("[warrior]",5, 100, 1);
+            heroes[1] = new Mage("[mage]", 5,80, 20);
 
         }
     }
