@@ -1,53 +1,80 @@
 package io.codeforall.fanstatics;
-
 import io.codeforall.fanstatics.Heroes.Hero;
+import java.util.List;
+
 
 public class TurnManager {
-    private Hero hero1;
-    private Hero hero2;
+    private List<Hero> heroes;
+    private int round;
 
-    public TurnManager(Hero hero1, Hero hero2){
-        this.hero1 = hero1;
-        this.hero2 = hero2;
+    public TurnManager(List<Hero> heroes) {
+        this.heroes = heroes;
+        this.round = 1; // Start with round 1
     }
 
-    public void startBattle(){
-        int round = 1;
-        System.out.println("Battle starts between " + hero1.getName() + " and " + hero2.getName());
+    public void startBattle() {
+        System.out.println("The battle begins with:");
+        displayHeroes();
 
-            // Loop until one hero's health is zero or below
-            while (hero1.getHealth() > 0 && hero2.getHealth() > 0) {
-                System.out.println("\n### Round " + round + " ###");
-                // Hero 1's turn
-                System.out.println(hero1.getName() + "'s turn:");
-                hero1.useAbility(hero2);
 
-                // Check if hero 2 is still alive
-                if (hero2.getHealth() <= 0) {
-                    System.out.println(hero2.getName() + "\nhas been defeated!");
-                    System.out.println(hero1.getName() + " wins the battle!");
-                    return; // End battle if hero 2 is defeated
+        while (heroesAlive() > 1 && round <= 20) {
+            System.out.println("\n### Round " + round + " ###");
+
+            for (int i = 0; i < heroes.size(); i++) {
+                Hero attacker = heroes.get(i);
+
+                if (attacker.getHealth() <= 0) continue;
+
+                Hero target = heroes.get((i + 1) % heroes.size());
+
+                if (target.getHealth() <= 0) continue;
+
+
+                System.out.println(attacker.getName() + " attacks " + target.getName() + ":");
+                attacker.useAbility(target);
+
+
+                System.out.println(target.getName() + " health after attack: " + target.getHealth());
+
+
+                if (target.getHealth() <= 0) {
+                    System.out.println(target.getName() + " has been defeated!");
                 }
 
-                // Hero 2's turn
-                System.out.println(hero2.getName() + "'s turn:");
-                hero2.useAbility(hero1);
-
-                // Check if hero 1 is still alive
-                if (hero1.getHealth() <= 0) {
-                    System.out.println(hero1.getName() + " has been defeated!");
-                    System.out.println(hero2.getName() + " wins the battle!");
-                    return; // End battle if hero 1 is defeated
+                if (heroesAlive() == 1) {
+                    break;
                 }
-
-                round++;
             }
 
-            // Final health status after the loop ends
-            System.out.println("Final Status:");
-            System.out.println(hero1.getName() + " health: " + hero1.getHealth());
-            System.out.println(hero2.getName() + " health: " + hero2.getHealth());
+            displayHeroes();
+            round++;
         }
 
-}
+        determineWinner();
+    }
 
+    private int heroesAlive() {
+        int count = 0;
+        for (Hero hero : heroes) {
+            if (hero.getHealth() > 0) count++;
+        }
+        return count;
+    }
+
+    private void displayHeroes() {
+        System.out.println("------------ hero statuses -----------------");
+        for (Hero hero : heroes) {
+            System.out.println(hero.getName() + " health: " + hero.getHealth());
+        }
+    }
+
+    private void determineWinner() {
+        for (Hero hero : heroes) {
+            if (hero.getHealth() > 0) {
+                System.out.println("\nThe battle is over! " + hero.getName() + " wins with " + hero.getHealth() + " health left.");
+                return;
+            }
+        }
+        System.out.println("The battle ends in a draw. No heroes remain alive.");
+    }
+}

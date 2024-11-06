@@ -2,10 +2,10 @@ package io.codeforall.fanstatics.Abilities;
 
 import io.codeforall.fanstatics.Heroes.Hero;
 
-// mage ability
-public class Fireball extends AbstractAbility {
+// Rogue ability
+public class Sneakattack extends AbstractAbility {
 
-    public Fireball(int damage) {
+    public Sneakattack(int damage) {
         super(damage, 0); // Set damage and no healing power
     }
 
@@ -14,9 +14,9 @@ public class Fireball extends AbstractAbility {
         String casterName = caster.getName();
         String targetName = target.getName();
 
-        System.out.println(casterName + " casts Fireball at " + targetName + ", dealing " + damage + " damage.");
+        System.out.println(casterName + " performs a sneak attack on " + targetName + ", dealing " + damage + " damage.");
 
-        target.takeDamage(damage);
+        target.takeDamage(damage); // Uses damage instead of power
     }
 }
 

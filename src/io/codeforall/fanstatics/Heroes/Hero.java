@@ -38,14 +38,27 @@ public abstract class Hero {
     }
 
     public void takeDamage(int damage) {
-        int damageTaken = damage - defense;
-        health -= damageTaken;
-        System.out.println(name + " takes " + damageTaken + " damage (Defense: " + defense + "), health is now: " + health);
+        int damageTaken = Math.max(0, damage - defense); // Ensure damage is at least 0
+        health -= damageTaken; // Apply damage reduction by defense
+        health = Math.max(0, health); // Ensure health doesn’t fall below zero
+
+        if (damageTaken > 0) {
+            System.out.println(name + " takes " + damageTaken + " damage (Defense: " + defense + "), health is now: " + health);
+        } else {
+            System.out.println(name + " is fully protected and takes no damage!");
+        }
     }
+
+
 
     public void increaseHealth(int amount) {
         health += amount;
-        System.out.println(name + "'s health increased by " + amount + ". Health is now: " + health);
+        System.out.println(name + " gains " + amount + " health, now at: " + health);
+    }
+
+    public void restoreHealth(int amount) {
+        health += amount;
+        System.out.println(name + " gains " + amount + " health, now at: " + health);
     }
 
 }
