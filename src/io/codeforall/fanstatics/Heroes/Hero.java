@@ -38,11 +38,10 @@ public abstract class Hero {
     }
 
     public void takeDamage(int damage) {
-        int damageTaken = Math.max(0, damage - defense); // Ensure damage is at least 0
-        health -= damageTaken; // Apply damage reduction by defense
-        health = Math.max(0, health); // Ensure health doesn’t fall below zero
+        int damageTaken = Math.max(0, damage - defense);
 
         if (damageTaken > 0) {
+            health -= damageTaken;
             System.out.println(name + " takes " + damageTaken + " damage (Defense: " + defense + "), health is now: " + health);
         } else {
             System.out.println(name + " is fully protected and takes no damage!");

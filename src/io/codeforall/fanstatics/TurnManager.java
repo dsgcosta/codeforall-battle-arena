@@ -28,14 +28,9 @@ public class TurnManager {
                 Hero target = heroes.get((i + 1) % heroes.size());
 
                 if (target.getHealth() <= 0) continue;
-
-
                 System.out.println(attacker.getName() + " attacks " + target.getName() + ":");
                 attacker.useAbility(target);
-
-
                 System.out.println(target.getName() + " health after attack: " + target.getHealth());
-
 
                 if (target.getHealth() <= 0) {
                     System.out.println(target.getName() + " has been defeated!");
